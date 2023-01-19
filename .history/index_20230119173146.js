@@ -10,6 +10,8 @@ app.set( 'view engine', 'ejs' );
 app.use( bodyParser.urlencoded( { extended: true, useNewUrlParser: true } ) );
 app.use( express.static( "public" ) );
 
+// mongoose.connect(
+//     `mongodb+srv://${ db_user }:${ db_password }@cluster0.soaw7.mongodb.net/todolistDB`, { useNewUrlParser: true, useUnifiedTopology: true } );
 
 mongoose.set( 'strictQuery', false );
 const connectDB = async () =>

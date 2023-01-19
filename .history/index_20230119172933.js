@@ -5,11 +5,15 @@ const mongoose = require( "mongoose" );
 const _ = require( "lodash" );
 const dotenv = require( "dotenv" ).config();
 
+const db_user = process.env.DB_USERNAME;
+const db_password = process.env.DB_PASSWORD;
 
 app.set( 'view engine', 'ejs' );
 app.use( bodyParser.urlencoded( { extended: true, useNewUrlParser: true } ) );
 app.use( express.static( "public" ) );
 
+// mongoose.connect(
+//     `mongodb+srv://${ db_user }:${ db_password }@cluster0.soaw7.mongodb.net/todolistDB`, { useNewUrlParser: true, useUnifiedTopology: true } );
 
 mongoose.set( 'strictQuery', false );
 const connectDB = async () =>
@@ -17,7 +21,8 @@ const connectDB = async () =>
     try
     {
         const conn = await mongoose.connect( process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true } );
-        console.log( `MongoDB Connected: ${ conn.connection.host }` );
+
+        console.log( "MongoDB Connected" );
 
     } catch ( error )
     {
@@ -26,14 +31,6 @@ const connectDB = async () =>
     }
 };
 
-
-connectDB().then( () =>
-{
-    app.listen( port, function ()
-    {
-        console.log( "Server is up and running at port " + port + " successfully" );
-    } );
-} );
 
 
 const itemsSchema = {
@@ -224,3 +221,10 @@ if ( port == null || port == "" )
     port = 8000;
 }
 
+connectDB().then( () =>
+{
+    app.listen( port, function ()
+    {
+        console.log( "Server is up and running at port " + port + " successfully" );
+    } );
+} );
