@@ -29,6 +29,9 @@ const connectDB = async () =>
 };
 
 
+
+
+
 const itemsSchema = {
     name: String
 };
@@ -217,10 +220,3 @@ if ( port == null || port == "" )
     port = 8000;
 }
 
-connectDB().then( () =>
-{
-    app.listen( port, function ()
-    {
-        console.log( "Server is up and running at port " + port + " successfully" );
-    } );
-} );

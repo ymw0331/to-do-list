@@ -10,7 +10,6 @@ const morgan = require( "morgan" );
 app.set( 'view engine', 'ejs' );
 app.use( bodyParser.urlencoded( { extended: true, useNewUrlParser: true } ) );
 app.use( express.static( "public" ) );
-app.use( morgan( "dev" ) );
 
 
 mongoose.set( 'strictQuery', false );
@@ -27,6 +26,15 @@ const connectDB = async () =>
         process.exit( 1 );
     }
 };
+
+
+connectDB().then( () =>
+{
+    app.listen( port, function ()
+    {
+        console.log( "Server is up and running at port " + port + " successfully" );
+    } );
+} );
 
 
 const itemsSchema = {
@@ -217,10 +225,3 @@ if ( port == null || port == "" )
     port = 8000;
 }
 
-connectDB().then( () =>
-{
-    app.listen( port, function ()
-    {
-        console.log( "Server is up and running at port " + port + " successfully" );
-    } );
-} );
