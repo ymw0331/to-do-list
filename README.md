@@ -76,5 +76,3 @@ Open your web browser and navigate to http://localhost:3000.
 #### Credits
 
 <p>This project was inspired by The App Brewery's Complete 2021 Web Development Bootcamp course on Udemy.</p>
-
-Link: https://good-tan-sea-lion-veil.cyclic.app/
